@@ -1,0 +1,51 @@
+{
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/assets/*", "*.js", "*.css", "*.png", "*.jpg", "*.jpeg", "*.gif", "*.svg", "*.ico", "*.woff", "*.woff2", "*.ttf", "*.eot"]
+  },
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/index.html",
+      "statusCode": 200
+    }
+  },
+  "routes": [
+    {
+      "route": "/dataset",
+      "rewrite": "/index.html"
+    },
+    {
+      "route": "/dataset/*",
+      "rewrite": "/index.html"
+    },
+    {
+      "route": "/results",
+      "rewrite": "/index.html"
+    },
+    {
+      "route": "/results/*",
+      "rewrite": "/index.html"
+    },
+    {
+      "route": "/launch",
+      "rewrite": "/index.html"
+    },
+    {
+      "route": "/launch/*",
+      "rewrite": "/index.html"
+    },
+    {
+      "route": "/settings",
+      "rewrite": "/index.html"
+    },
+    {
+      "route": "/settings/*",
+      "rewrite": "/index.html"
+    }
+  ],
+  "mimeTypes": {
+    ".json": "application/json",
+    ".js": "application/javascript",
+    ".css": "text/css"
+  }
+}
