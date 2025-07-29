@@ -4,6 +4,10 @@
     "exclude": ["/assets/*", "*.js", "*.css", "*.png", "*.jpg", "*.jpeg", "*.gif", "*.svg", "*.ico", "*.woff", "*.woff2", "*.ttf", "*.eot"]
   },
   "responseOverrides": {
+    "401": {
+      "redirect": "/.auth/login/aad?post_login_redirect_uri=.referrer",
+      "statusCode": 302
+    },
     "404": {
       "rewrite": "/index.html",
       "statusCode": 200
@@ -11,36 +15,16 @@
   },
   "routes": [
     {
-      "route": "/dataset",
-      "rewrite": "/index.html"
+      "route": "/login",
+      "redirect": "/.auth/login/aad"
     },
     {
-      "route": "/dataset/*",
-      "rewrite": "/index.html"
+      "route": "/logout",
+      "redirect": "/.auth/logout"
     },
     {
-      "route": "/results",
-      "rewrite": "/index.html"
-    },
-    {
-      "route": "/results/*",
-      "rewrite": "/index.html"
-    },
-    {
-      "route": "/launch",
-      "rewrite": "/index.html"
-    },
-    {
-      "route": "/launch/*",
-      "rewrite": "/index.html"
-    },
-    {
-      "route": "/settings",
-      "rewrite": "/index.html"
-    },
-    {
-      "route": "/settings/*",
-      "rewrite": "/index.html"
+      "route": "/*",
+      "allowedRoles": ["authenticated"]
     }
   ],
   "mimeTypes": {
