@@ -15,9 +15,9 @@ if (Test-Path $envFilePath) {
 
         $content = Get-Content $envFilePath -Raw
         if ($content -match "NEW_CHAT_BUTTON_XPATH") {
-            # Replace the existing line
-            $newContent = $content -replace "NEW_CHAT_BUTTON_XPATH.*", $lineToAppend
-            Set-Content -Path $envFilePath -Value $newContent.TrimEnd() -ErrorAction Stop
+            # Replace the existing line (handle case where it's stuck to previous line)
+            $newContent = $content -replace "NEW_CHAT_BUTTON_XPATH.*", "`r`n$lineToAppend"
+            Set-Content -Path $envFilePath -Value $newContent.TrimEnd() -NoNewline -ErrorAction Stop
             Write-Host "Successfully updated NEW_CHAT_BUTTON_XPATH in .env file" -ForegroundColor Green
         } else {
             # Append newline + the new line
