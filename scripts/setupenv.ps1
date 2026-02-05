@@ -20,8 +20,8 @@ if (Test-Path $envFilePath) {
             Set-Content -Path $envFilePath -Value $newContent.TrimEnd() -ErrorAction Stop
             Write-Host "Successfully updated NEW_CHAT_BUTTON_XPATH in .env file" -ForegroundColor Green
         } else {
-            # Append the new line
-            Add-Content -Path $envFilePath -Value $lineToAppend -ErrorAction Stop
+            # Append newline + the new line
+            Add-Content -Path $envFilePath -Value "`r`n$lineToAppend" -ErrorAction Stop
             Write-Host "Successfully appended NEW_CHAT_BUTTON_XPATH to .env file" -ForegroundColor Green
         }
 
